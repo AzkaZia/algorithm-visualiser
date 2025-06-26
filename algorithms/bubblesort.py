@@ -15,4 +15,4 @@ def bubble_sort(arr):
                 steps.append((arr[:], [i, i +1])) # record after swap
         n -= 1
 
-    return steps
+    return steps, comparisons
