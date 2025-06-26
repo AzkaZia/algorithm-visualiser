@@ -22,16 +22,18 @@ if st.button("▶️ Run Algorithm"):
     arr = [int(x) for x in items] if is_numeric else items
 
     if algorithm == "Bubble Sort":
-        steps = bubble_sort(arr.copy())
+        steps, total_comparisons = bubble_sort(arr.copy())
     else:
         steps = insertion_sort(arr.copy())
 
     comparison_count = 0
 
-    for state, highlights in steps:
-        comparison_count += 1
+    for index, (state, highlights) in enumerate(steps):
+        is_comparison = index % 2 == 0  # only count comparisons, not swap frames
+        if is_comparison:
+            comparison_count += 1
+            
         highlight_set = set(highlights)
-
         chart_html = ""
         for i, val in enumerate(state):
             color = "#e74c3c" if i in highlight_set else "#3498db"
