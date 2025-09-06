@@ -15,8 +15,6 @@ comparison_display = st.empty()
 
 user_input = st.text_input("Enter comma-separated values", "5,3,8,1,2")
 algorithm = st.selectbox("Choose algorithm", ["Bubble Sort", "Insertion Sort", "Merge Sort", "Tim Sort"])
-speed = st.slider("⚡ Speed", 1, 10, 5)
-delay = 1.1 - (speed * 0.1)
 
 algo_desc = {
     "Bubble Sort": "Bubble Sort repeatedly swaps adjacent elements to sort the list. Simple but slow for large data.",
@@ -24,6 +22,9 @@ algo_desc = {
     "Merge Sort": "Merge Sort recursively divides the list and merges sorted sublists. Efficient O(n log n) algorithm.",
     "Tim Sort": "TimSort splits the list into small runs, sorts each run with Insertion Sort, then merges runs like Merge Sort. Python's default sort."
 }
+
+speed = st.slider("⚡ Speed", 1, 10, 5)
+delay = 1.1 - (speed * 0.1)
 
 st.markdown(algo_desc[algorithm])
 
