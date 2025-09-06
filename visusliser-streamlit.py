@@ -2,7 +2,7 @@ import streamlit as st
 import time
 from algorithms.bubblesort import bubble_sort
 from algorithms.insertionsort import insertion_sort
-from algorithms.mrgesort import merge_sort_sort
+from algorithms.mrgesort import merge_sort
 from streamlit_analytics import track
 import streamlit as st
 
