@@ -3,6 +3,7 @@ import time
 from algorithms.bubblesort import bubble_sort
 from algorithms.insertionsort import insertion_sort
 from algorithms.mrgesort import merge_sort
+from algorithms.timsort import timsort
 
 st.set_page_config(page_title="Algorithm Visualiser", layout="wide")
 
@@ -13,7 +14,7 @@ chart_area = st.empty()
 comparison_display = st.empty()
 
 user_input = st.text_input("Enter comma-separated values", "5,3,8,1,2")
-algorithm = st.selectbox("Choose algorithm", ["Bubble Sort", "Insertion Sort", "Merge Sort"])
+algorithm = st.selectbox("Choose algorithm", ["Bubble Sort", "Insertion Sort", "Merge Sort", "Tim Sort"])
 speed = st.slider("⚡ Speed", 1, 10, 5)
 delay = 1.1 - (speed * 0.1)
 
@@ -26,9 +27,10 @@ if st.button("▶️ Run Algorithm"):
         steps, total_comparisons = bubble_sort(arr.copy())
     elif algorithm == "Insertion Sort":
         steps = insertion_sort(arr.copy())
-    else:
+    elif algorithm == "Merge Sort":
         steps, total_comparisons = merge_sort(arr.copy())
-
+    else:  # Tim Sort
+        steps, total_comparisons = timsort(arr.copy())
     comparison_count = 0
 
     for index, (state, highlights) in enumerate(steps):
