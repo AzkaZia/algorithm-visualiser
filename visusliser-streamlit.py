@@ -4,7 +4,7 @@ from algorithms.bubblesort import bubble_sort
 from algorithms.insertionsort import insertion_sort
 from algorithms.mrgesort import merge_sort
 from streamlit_analytics import track
-import streamlit as st
+
 
 with track():
     st.title("Algorithm Visualizer")
@@ -22,7 +22,7 @@ with track():
     speed = st.slider("⚡ Speed", 1, 10, 5)
     delay = 1.1 - (speed * 0.1)
 
-    if st.button("▶️ Run Algorithm"):
+    if st.button("Run Algorithm"):
         items = [x.strip() for x in user_input.split(",")]
         is_numeric = all(item.replace("-", "").isnumeric() for item in items)
         arr = [int(x) for x in items] if is_numeric else items
@@ -52,7 +52,7 @@ with track():
                 """
 
             chart_area.markdown(chart_html, unsafe_allow_html=True)
-            comparison_display.markdown(f"🔁 Comparisons: **{comparison_count}**")
+            comparison_display.markdown(f"Comparisons: **{comparison_count}**")
             time.sleep(delay)
 
         st.success("Done! Sorted successfully.")
