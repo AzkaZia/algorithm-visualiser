@@ -18,6 +18,15 @@ algorithm = st.selectbox("Choose algorithm", ["Bubble Sort", "Insertion Sort", "
 speed = st.slider("⚡ Speed", 1, 10, 5)
 delay = 1.1 - (speed * 0.1)
 
+algo_desc = {
+    "Bubble Sort": "Bubble Sort repeatedly swaps adjacent elements to sort the list. Simple but slow for large data.",
+    "Insertion Sort": "Insertion Sort builds the sorted list one element at a time by inserting into the correct position.",
+    "Merge Sort": "Merge Sort recursively divides the list and merges sorted sublists. Efficient O(n log n) algorithm.",
+    "Tim Sort": "TimSort splits the list into small runs, sorts each run with Insertion Sort, then merges runs like Merge Sort. Python's default sort."
+}
+
+st.markdown(algo_desc[algorithm])
+
 if st.button("▶️ Run Algorithm"):
     items = [x.strip() for x in user_input.split(",")]
     is_numeric = all(item.replace("-", "").isnumeric() for item in items)
