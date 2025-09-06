@@ -2,6 +2,7 @@ import streamlit as st
 import time
 from algorithms.bubblesort import bubble_sort
 from algorithms.insertionsort import insertion_sort
+from algorithms.mrgesort import merge_sort_sort
 from streamlit_analytics import track
 import streamlit as st
 
@@ -28,8 +29,10 @@ with track():
 
         if algorithm == "Bubble Sort":
             steps, total_comparisons = bubble_sort(arr.copy())
-        else:
+        elif algorithm == "Insertion Sort":
             steps = insertion_sort(arr.copy())
+        else:
+            steps, total_comparisons = merge_sort(arr.copy())
 
         comparison_count = 0
 
@@ -52,5 +55,4 @@ with track():
             comparison_display.markdown(f"🔁 Comparisons: **{comparison_count}**")
             time.sleep(delay)
 
-        st.success("🎉 Done! Sorted successfully.")
-
+        st.success("Done! Sorted successfully.")
